@@ -32,7 +32,7 @@ class Index:
                 try:
                     self.key, data = search(url)
                     self.data.extend(data)
-                    self.label_key = f'key word : {self.key}'
+                    self.label_key = f'Keyword : {self.key}'
                     self.data = list(dict.fromkeys(self.data))
                 except:
                     pass
@@ -53,7 +53,7 @@ class Index:
                 download([self.key, self.data],response)
                 return response
                 
-            context = { 'form': form, 'message':self.label_key, 'data':self.data }
+            context = { 'form': form, 'label':self.label_key, 'data':self.data }
             return render(request, html, context)
 
         # 未対応のメソッド

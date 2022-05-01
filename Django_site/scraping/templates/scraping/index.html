@@ -38,7 +38,7 @@
         <button type="submit" name="submit4">Download</button>
     </form>
 
-    <p>{{ message }}</p>
+    <p>{{ label }}</p>
     <table>
         <tr>
             <th>url</th>
@@ -46,9 +46,9 @@
             <th>authors</th>
             <th>title</th>
         </tr>
-        {% for member in data %}
+        {% for paper in data %}
         <tr>
-            {% for value in member %}
+            {% for value in paper %}
             {% if "https" in value %}
             <td><a href="{{ value }}" target="_blank" rel="noopener noreferrer">{{ value }}</a></td>
             {% else %}
