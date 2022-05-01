@@ -8,7 +8,7 @@ from .app.bs4_ieee import download
 
 class Index:
     def __init__(self):
-        self.data = [[]]
+        self.data = []
         self.key = ''
         self.label_key = ''
         self.reverse = -1
@@ -37,12 +37,12 @@ class Index:
                 except:
                     pass
 
-            if 'submit2' in request.POST and len(self.data) > 0:
+            if 'submit2' in request.POST and len(self.data) > 1:
                 self.data = sorted(self.data)[::self.reverse]
                 self.reverse *= -1
 
             if 'submit3' in request.POST:
-                self.data = [[]]
+                self.data = []
                 self.key = ''
                 self.label_key = self.key
 
