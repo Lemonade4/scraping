@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,td {
+            border: solid 1px;
+        }
+
+        tr:hover {
+            background-color: turquoise;
+        }
+
+        a {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Web scraping</h1>
+    <p>Support : <a href="https://ieeexplore.ieee.org" target="_blank" rel="noopener noreferrer">IEEE Explore</a></p>
+    <form class="" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="submit1">Get</button>
+        <button type="submit" name="submit2">Sort</button>
+        <button type="submit" name="submit3">Clear</button>
+        <button type="submit" name="submit4">Download</button>
+    </form>
+
+    <p>{{ message }}</p>
+    <table>
+        <tr>
+            <th>url</th>
+            <th>year</th>
+            <th>authors</th>
+            <th>title</th>
+        </tr>
+        {% for member in data %}
+        <tr>
+            {% for value in member %}
+            {% if "https" in value %}
+            <td><a href="{{ value }}" target="_blank" rel="noopener noreferrer">{{ value }}</a></td>
+            {% else %}
+            <td>{{ value }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
